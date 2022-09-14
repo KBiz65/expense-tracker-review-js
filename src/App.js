@@ -1,10 +1,15 @@
+import { Container, Row, Col } from "react-bootstrap";
 import "./App.css";
 
 function App() {
   return (
-    <div>
-      <h1>Expense Tracker</h1>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <h1>Expense Tracker</h1>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
