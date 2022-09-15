@@ -4,10 +4,10 @@ import "./ExpenseForm.css";
 
 function ExpenseForm() {
   const [validated, setValidated] = useState(false);
-  const [vendor, setVendor] = useState("");
-  const [date, setDate] = useState("");
-  const [amount, setAmount] = useState("");
-  const [desc, setDesc] = useState("");
+  const [vendorInput, setVendorInput] = useState("");
+  const [dateInput, setDateInput] = useState("");
+  const [amountInput, setAmountInput] = useState("");
+  const [descInput, setDescInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,37 +15,40 @@ function ExpenseForm() {
     const form = e.currentTarget;
 
     if (!form.checkValidity()) {
-      console.log("invalid form");
+      setValidated(true);
     } else {
-      console.log("form is valid");
+      // create a new expense
+      const newExpense = {
+        vendor: vendorInput,
+        date: new Date(dateInput),
+        amount: amountInput,
+        desc: descInput,
+      };
 
-      // log data to see it...
-      console.log(vendor);
-      console.log(date);
-      console.log(amount);
-      console.log(desc);
+      // reset the form
+      setVendorInput("");
+      setDateInput("");
+      setAmountInput("");
+      setDescInput("");
 
-      // create a new expense...
-
-      // reset the form...
+      setValidated(false);
     }
-    setValidated(true);
   };
 
   const vendorChangeHandler = (e) => {
-    setVendor(e.target.value);
+    setVendorInput(e.target.value);
   };
 
   const dateChangeHandler = (e) => {
-    setDate(e.target.value);
+    setDateInput(e.target.value);
   };
 
   const amountChangeHandler = (e) => {
-    setAmount(e.target.value);
+    setAmountInput(e.target.value);
   };
 
   const descChangeHandler = (e) => {
-    setDesc(e.target.value);
+    setDescInput(e.target.value);
   };
 
   return (
@@ -63,6 +66,7 @@ function ExpenseForm() {
             <Form.Control
               required
               type="text"
+              value={vendorInput}
               onChange={vendorChangeHandler}
               className="input-vendor"
             />
@@ -72,6 +76,7 @@ function ExpenseForm() {
             <Form.Control
               required
               type="date"
+              value={dateInput}
               onChange={dateChangeHandler}
               className="input-date"
             />
@@ -85,6 +90,7 @@ function ExpenseForm() {
               type="number"
               min={0.01}
               step={0.01}
+              value={amountInput}
               placeholder={"0.00"}
               onChange={amountChangeHandler}
               className="input-amount"
@@ -94,6 +100,7 @@ function ExpenseForm() {
             <Form.Label>Description (Optional)</Form.Label>
             <Form.Control
               type="text"
+              value={descInput}
               onChange={descChangeHandler}
               className="input-desc"
             />
