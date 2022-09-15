@@ -1,0 +1,8 @@
+.expense-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-form .submit-btn {
+  align-self: flex-end;
+}
