@@ -1,5 +1,5 @@
 import { Card, Table } from "react-bootstrap";
-import ExpenseTableRowOptions from "./ExpenseTableRowOptions";
+import ExpenseTableRow from "./ExpenseTableRow";
 
 function ExpenseTable() {
   return (
@@ -16,15 +16,7 @@ function ExpenseTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Bank of America</td>
-            <td>Bill Pay</td>
-            <td>$200.00</td>
-            <td>9/7/22</td>
-            <td>
-              <ExpenseTableRowOptions />
-            </td>
-          </tr>
+          <ExpenseTableRow />
         </tbody>
       </Table>
     </Card>
