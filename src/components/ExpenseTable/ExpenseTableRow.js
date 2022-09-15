@@ -1,12 +1,12 @@
 import ExpenseTableRowOptions from "./ExpenseTableRowOptions";
 
-function ExpenseTableRow() {
+function ExpenseTableRow(props) {
   return (
     <tr>
-      <td>Bank of America</td>
-      <td>Bill Pay</td>
-      <td>$200.00</td>
-      <td>9/7/22</td>
+      <td>{props.vendor}</td>
+      <td>{props.desc}</td>
+      <td>{props.amount}</td>
+      <td>{props.date}</td>
       <td>
         <ExpenseTableRowOptions />
       </td>

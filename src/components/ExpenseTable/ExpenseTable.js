@@ -1,7 +1,7 @@
 import { Card, Table } from "react-bootstrap";
 import ExpenseTableRow from "./ExpenseTableRow";
 
-function ExpenseTable() {
+function ExpenseTable(props) {
   return (
     <Card>
       <h2>Expense Table Here</h2>
@@ -16,7 +16,14 @@ function ExpenseTable() {
           </tr>
         </thead>
         <tbody>
-          <ExpenseTableRow />
+          {props.items.map((expense) => (
+            <ExpenseTableRow
+              vendor={expense.vendor}
+              date={expense.date}
+              amount={expense.amount}
+              desc={expense.desc}
+            />
+          ))}
         </tbody>
       </Table>
     </Card>

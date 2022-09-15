@@ -4,12 +4,26 @@ import ExpenseTable from "./components/ExpenseTable/ExpenseTable";
 import "./App.css";
 
 function App() {
+  const expenses = [
+    {
+      vendor: "book purchase",
+      date: "9-22-2022",
+      amount: "34.99",
+      desc: "bought a book",
+    },
+    {
+      vendor: "bought dog food",
+      date: "9-21-2022",
+      amount: "49.99",
+      desc: "bought two bags from petco",
+    },
+  ];
+
   const newExpenseDataHandler = (newExpenseData) => {
-    const expenseData = {
+    const newExpense = {
       ...newExpenseData,
-      id: Math.random().toString(),
     };
-    console.log("hello from app.js", expenseData);
+    expenses.push(newExpense);
   };
 
   return (
@@ -18,7 +32,7 @@ function App() {
         <Col>
           <h1>Expense Tracker</h1>
           <ExpenseForm onNewExpenseSubmit={newExpenseDataHandler} />
-          <ExpenseTable />
+          <ExpenseTable items={expenses} />
         </Col>
       </Row>
     </Container>
