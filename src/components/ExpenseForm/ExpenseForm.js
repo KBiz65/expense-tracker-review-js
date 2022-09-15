@@ -4,6 +4,7 @@ import "./ExpenseForm.css";
 function ExpenseForm() {
   return (
     <Card>
+      <h2>Expense Form Here</h2>
       <Form className="expense-form">
         <Row>
           <Form.Group as={Col}>

@@ -8,7 +8,7 @@ function App() {
     <Container>
       <Row>
         <Col>
-          <h1>Expense Tracker</h1>
+          <h1>Title Goes Here</h1>
           <ExpenseForm />
           <ExpenseTable />
         </Col>
