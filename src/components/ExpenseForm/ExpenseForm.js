@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Button, Card, Form, Col, Row } from "react-bootstrap";
 import "./ExpenseForm.css";
 
-function ExpenseForm() {
+function ExpenseForm(props) {
   const [validated, setValidated] = useState(false);
   const [vendorInput, setVendorInput] = useState("");
   const [dateInput, setDateInput] = useState("");
   const [amountInput, setAmountInput] = useState("");
   const [descInput, setDescInput] = useState("");
 
-  const handleSubmit = (e) => {
+  const expenseFormSubmitHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
     const form = e.currentTarget;
@@ -18,12 +18,14 @@ function ExpenseForm() {
       setValidated(true);
     } else {
       // create a new expense
-      const newExpense = {
+      const newExpenseData = {
         vendor: vendorInput,
         date: new Date(dateInput),
         amount: amountInput,
         desc: descInput,
       };
+
+      props.onNewExpenseSubmit(newExpenseData);
 
       // reset the form
       setVendorInput("");
@@ -57,7 +59,7 @@ function ExpenseForm() {
       <Form
         noValidate
         validated={validated}
-        onSubmit={handleSubmit}
+        onSubmit={expenseFormSubmitHandler}
         className="expense-form"
       >
         <Row>
