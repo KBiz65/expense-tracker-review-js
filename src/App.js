@@ -30,13 +30,26 @@ function App() {
     });
   };
 
+  const optionBtnClickHandler = (id, option) => {
+    if (option === "delete") {
+      setExpenses((prevExpenses) => {
+        return prevExpenses.filter((expense) => expense.id !== id);
+      });
+    } else if (option === "edit") {
+      console.log("still working on edit");
+    }
+  };
+
   return (
     <Container>
       <Row>
         <Col>
           <h1>Expense Tracker</h1>
           <ExpenseForm onNewExpenseSubmit={newExpenseDataHandler} />
-          <ExpenseTable expenseList={expenses} />
+          <ExpenseTable
+            onOptionBtnClick={optionBtnClickHandler}
+            expenseList={expenses}
+          />
         </Col>
       </Row>
     </Container>

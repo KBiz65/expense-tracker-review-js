@@ -1,6 +1,10 @@
 import ExpenseTableRowOptions from "./ExpenseTableRowOptions";
 
 function ExpenseTableRow(props) {
+  const optionBtnClickHandler = (option) => {
+    props.onOptionBtnClick(props.expense.id, option);
+  };
+
   return (
     <tr>
       <td>{props.expense.vendor}</td>
@@ -8,7 +12,7 @@ function ExpenseTableRow(props) {
       <td>{props.expense.amount}</td>
       <td>{props.expense.date}</td>
       <td>
-        <ExpenseTableRowOptions />
+        <ExpenseTableRowOptions onOptionBtnClick={optionBtnClickHandler} />
       </td>
     </tr>
   );

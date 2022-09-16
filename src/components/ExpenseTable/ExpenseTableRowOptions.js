@@ -1,10 +1,18 @@
 import { Dropdown, DropdownButton } from "react-bootstrap";
 
-function ExpenseTableRowOptions() {
+function ExpenseTableRowOptions(props) {
+  const editBtnClickHandler = () => {
+    props.onOptionBtnClick("edit");
+  };
+
+  const deleteBtnClickHandler = () => {
+    props.onOptionBtnClick("delete");
+  };
+
   return (
     <DropdownButton title="Options">
-      <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Delete</Dropdown.Item>
+      <Dropdown.Item onClick={editBtnClickHandler}>Edit</Dropdown.Item>
+      <Dropdown.Item onClick={deleteBtnClickHandler}>Delete</Dropdown.Item>
     </DropdownButton>
   );
 }

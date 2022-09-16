@@ -2,6 +2,10 @@ import { Card, Table } from "react-bootstrap";
 import ExpenseTableRow from "./ExpenseTableRow";
 
 function ExpenseTable(props) {
+  const optionBtnClickHandler = (id, option) => {
+    props.onOptionBtnClick(id, option);
+  };
+
   return (
     <Card>
       <h2>Expenses</h2>
@@ -17,7 +21,11 @@ function ExpenseTable(props) {
         </thead>
         <tbody>
           {props.expenseList.map((expense) => (
-            <ExpenseTableRow key={expense.id} expense={expense} />
+            <ExpenseTableRow
+              key={expense.id}
+              expense={expense}
+              onOptionBtnClick={optionBtnClickHandler}
+            />
           ))}
         </tbody>
       </Table>
