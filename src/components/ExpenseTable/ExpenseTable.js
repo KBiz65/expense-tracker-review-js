@@ -17,7 +17,7 @@ function ExpenseTable(props) {
         </thead>
         <tbody>
           {props.expenseList.map((expense) => (
-            <ExpenseTableRow expense={expense} />
+            <ExpenseTableRow key={expense.id} expense={expense} />
           ))}
         </tbody>
       </Table>

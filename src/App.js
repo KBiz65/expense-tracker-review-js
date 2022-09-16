@@ -6,12 +6,14 @@ import { useState } from "react";
 
 const fake_data = [
   {
+    id: "238375",
     vendor: "Barnes & Noble",
     date: "2022-09-22",
     amount: "34.99",
     desc: "bought a book",
   },
   {
+    id: "130954",
     vendor: "PetSmart",
     date: "2022-09-21",
     amount: "49.99",

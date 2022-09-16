@@ -23,6 +23,7 @@ function ExpenseForm(props) {
         date: dateInput,
         amount: amountInput,
         desc: descInput,
+        id: Math.trunc(Math.random() * 1000000).toString(),
       };
 
       props.onNewExpenseSubmit(newExpenseData);
