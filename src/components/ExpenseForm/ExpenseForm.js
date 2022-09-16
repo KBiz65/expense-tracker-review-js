@@ -20,7 +20,7 @@ function ExpenseForm(props) {
       // create a new expense
       const newExpenseData = {
         vendor: vendorInput,
-        date: new Date(dateInput),
+        date: dateInput,
         amount: amountInput,
         desc: descInput,
       };

@@ -4,7 +4,7 @@ import ExpenseTableRow from "./ExpenseTableRow";
 function ExpenseTable(props) {
   return (
     <Card>
-      <h2>Expense Table Here</h2>
+      <h2>Expenses</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -16,7 +16,7 @@ function ExpenseTable(props) {
           </tr>
         </thead>
         <tbody>
-          {props.items.map((expense) => (
+          {props.expenseList.map((expense) => (
             <ExpenseTableRow
               vendor={expense.vendor}
               date={expense.date}

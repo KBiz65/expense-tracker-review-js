@@ -2,28 +2,30 @@ import { Container, Row, Col } from "react-bootstrap";
 import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 import ExpenseTable from "./components/ExpenseTable/ExpenseTable";
 import "./App.css";
+import { useState } from "react";
+
+const fake_data = [
+  {
+    vendor: "Barnes & Noble",
+    date: "2022-09-22",
+    amount: "34.99",
+    desc: "bought a book",
+  },
+  {
+    vendor: "PetSmart",
+    date: "2022-09-21",
+    amount: "49.99",
+    desc: "bought 2 bags dog food",
+  },
+];
 
 function App() {
-  const expenses = [
-    {
-      vendor: "book purchase",
-      date: "9-22-2022",
-      amount: "34.99",
-      desc: "bought a book",
-    },
-    {
-      vendor: "bought dog food",
-      date: "9-21-2022",
-      amount: "49.99",
-      desc: "bought two bags from petco",
-    },
-  ];
+  const [expenses, setExpenses] = useState(fake_data);
 
   const newExpenseDataHandler = (newExpenseData) => {
-    const newExpense = {
-      ...newExpenseData,
-    };
-    expenses.push(newExpense);
+    setExpenses((prevExpenses) => {
+      return [newExpenseData, ...prevExpenses];
+    });
   };
 
   return (
@@ -32,7 +34,7 @@ function App() {
         <Col>
           <h1>Expense Tracker</h1>
           <ExpenseForm onNewExpenseSubmit={newExpenseDataHandler} />
-          <ExpenseTable items={expenses} />
+          <ExpenseTable expenseList={expenses} />
         </Col>
       </Row>
     </Container>
