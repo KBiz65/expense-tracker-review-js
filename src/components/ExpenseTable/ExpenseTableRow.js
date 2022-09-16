@@ -3,10 +3,10 @@ import ExpenseTableRowOptions from "./ExpenseTableRowOptions";
 function ExpenseTableRow(props) {
   return (
     <tr>
-      <td>{props.vendor}</td>
-      <td>{props.desc}</td>
-      <td>{props.amount}</td>
-      <td>{props.date}</td>
+      <td>{props.expense.vendor}</td>
+      <td>{props.expense.desc}</td>
+      <td>{props.expense.amount}</td>
+      <td>{props.expense.date}</td>
       <td>
         <ExpenseTableRowOptions />
       </td>
