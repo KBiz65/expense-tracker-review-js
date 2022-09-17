@@ -84,6 +84,15 @@ const EditExpenseForm = (props) => {
       </Row>
       <Row>
         <Form.Group as={Col}>
+          <Form.Label>Description (Optional)</Form.Label>
+          <Form.Control
+            type="text"
+            value={descInput}
+            onChange={descChangeHandler}
+            className="input-desc"
+          />
+        </Form.Group>
+        <Form.Group as={Col}>
           <Form.Label>Amount</Form.Label>
           <Form.Control
             required
@@ -94,15 +103,6 @@ const EditExpenseForm = (props) => {
             placeholder={"0.00"}
             onChange={amountChangeHandler}
             className="input-amount"
-          />
-        </Form.Group>
-        <Form.Group as={Col}>
-          <Form.Label>Description (Optional)</Form.Label>
-          <Form.Control
-            type="text"
-            value={descInput}
-            onChange={descChangeHandler}
-            className="input-desc"
           />
         </Form.Group>
       </Row>

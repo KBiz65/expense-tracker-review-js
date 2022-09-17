@@ -57,7 +57,7 @@ function ExpenseForm(props) {
   };
 
   return (
-    <Card>
+    <Card className="expense-form-container">
       <h2>Add New Expense</h2>
       <Form
         noValidate
@@ -73,7 +73,6 @@ function ExpenseForm(props) {
               type="text"
               value={vendorInput}
               onChange={vendorChangeHandler}
-              className="input-vendor"
             />
           </Form.Group>
           <Form.Group as={Col}>
@@ -83,11 +82,18 @@ function ExpenseForm(props) {
               type="date"
               value={dateInput}
               onChange={dateChangeHandler}
-              className="input-date"
             />
           </Form.Group>
         </Row>
         <Row>
+          <Form.Group as={Col}>
+            <Form.Label>Description (Optional)</Form.Label>
+            <Form.Control
+              type="text"
+              value={descInput}
+              onChange={descChangeHandler}
+            />
+          </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Amount</Form.Label>
             <Form.Control
@@ -98,16 +104,6 @@ function ExpenseForm(props) {
               value={amountInput}
               placeholder={"0.00"}
               onChange={amountChangeHandler}
-              className="input-amount"
-            />
-          </Form.Group>
-          <Form.Group as={Col}>
-            <Form.Label>Description (Optional)</Form.Label>
-            <Form.Control
-              type="text"
-              value={descInput}
-              onChange={descChangeHandler}
-              className="input-desc"
             />
           </Form.Group>
         </Row>

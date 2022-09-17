@@ -9,7 +9,7 @@ function ExpenseTable(props) {
   return (
     <Card>
       <h2>Expenses</h2>
-      <Table striped bordered hover>
+      <Table variant="dark" striped bordered hover>
         <thead>
           <tr>
             <th>Vendor</th>

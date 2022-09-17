@@ -52,7 +52,7 @@ function App() {
     <Container>
       <Row>
         <Col>
-          <h1>Expense Tracker</h1>
+          <h1 className="app-title">Expense Tracker</h1>
           <ExpenseForm onNewExpenseSubmit={newExpenseDataHandler} />
           <ExpenseTable
             onOptionBtnClick={optionBtnClickHandler}
