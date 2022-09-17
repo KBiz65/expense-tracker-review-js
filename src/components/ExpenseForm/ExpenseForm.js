@@ -105,6 +105,9 @@ function ExpenseForm(props) {
               placeholder={"0.00"}
               onChange={amountChangeHandler}
             />
+            <Form.Control.Feedback type="invalid">
+              Must be formatted to two decimal places max
+            </Form.Control.Feedback>
           </Form.Group>
         </Row>
         <Button className="submit-btn" variant="primary" type="submit">

@@ -68,7 +68,6 @@ const EditExpenseForm = (props) => {
             type="text"
             value={vendorInput}
             onChange={vendorChangeHandler}
-            className="input-vendor"
           />
         </Form.Group>
         <Form.Group as={Col}>
@@ -78,7 +77,6 @@ const EditExpenseForm = (props) => {
             type="date"
             value={dateInput}
             onChange={dateChangeHandler}
-            className="input-date"
           />
         </Form.Group>
       </Row>
@@ -89,7 +87,6 @@ const EditExpenseForm = (props) => {
             type="text"
             value={descInput}
             onChange={descChangeHandler}
-            className="input-desc"
           />
         </Form.Group>
         <Form.Group as={Col}>
@@ -102,9 +99,11 @@ const EditExpenseForm = (props) => {
             value={amountInput}
             placeholder={"0.00"}
             onChange={amountChangeHandler}
-            className="input-amount"
           />
         </Form.Group>
+        <Form.Control.Feedback type="invalid">
+          Must be formatted to two decimal places max
+        </Form.Control.Feedback>
       </Row>
       <Button className="submit-btn" variant="primary" type="submit">
         Submit
