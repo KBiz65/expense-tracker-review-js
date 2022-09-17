@@ -23,10 +23,9 @@ const EditExpenseForm = (props) => {
         date: dateInput,
         amount: amountInput,
         desc: descInput,
-        id: props.data.id, // set id to old val
       };
 
-      props.onEditExpenseSubmit(editedExpenseData);
+      props.onEditExpenseSubmit(props.data.id, editedExpenseData);
 
       // reset the form
       setVendorInput("");

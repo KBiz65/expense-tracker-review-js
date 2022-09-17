@@ -17,16 +17,18 @@ function ExpenseForm(props) {
     if (!form.checkValidity()) {
       setValidated(true);
     } else {
-      // create a new expense
+      // gen new id
+      const id = Math.trunc(Math.random() * 1000000).toString();
+
+      // package data together
       const newExpenseData = {
         vendor: vendorInput,
         date: dateInput,
         amount: amountInput,
         desc: descInput,
-        id: Math.trunc(Math.random() * 1000000).toString(),
       };
 
-      props.onNewExpenseSubmit(newExpenseData);
+      props.onNewExpenseSubmit(id, newExpenseData);
 
       // reset the form
       setVendorInput("");

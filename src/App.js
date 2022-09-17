@@ -5,51 +5,46 @@ import ExpenseTable from "./components/ExpenseTable/ExpenseTable";
 import EditExpenseForm from "./components/EditExpenseForm/EditExpenseForm";
 import "./App.css";
 
-const fake_data = [
-  {
-    id: "238375",
-    vendor: "Barnes & Noble",
-    date: "2022-09-22",
-    amount: "34.99",
-    desc: "bought a book",
-  },
-  {
-    id: "130954",
-    vendor: "PetSmart",
-    date: "2022-09-21",
-    amount: "49.99",
-    desc: "bought 2 bags dog food",
-  },
-];
+const data = [];
+
+// get all local storage data as array
+for (const id of Object.keys(localStorage)) {
+  const props = JSON.parse(localStorage.getItem(id));
+  data.push({ id, ...props });
+}
 
 function App() {
-  const [expenses, setExpenses] = useState(fake_data);
+  const [expenses, setExpenses] = useState(data);
   const [expenseToEdit, setExpenseToEdit] = useState("");
 
   const [show, setShow] = useState(false);
   const openEditFormModal = () => setShow(true);
   const closeEditFormModal = () => setShow(false);
 
-  const newExpenseDataHandler = (newExpenseData) => {
+  const newExpenseDataHandler = (id, newExpenseData) => {
+    localStorage.setItem(id, JSON.stringify(newExpenseData));
     setExpenses((prevExpenses) => {
-      return [newExpenseData, ...prevExpenses];
+      return [{ id, ...newExpenseData }, ...prevExpenses];
     });
   };
 
   const optionBtnClickHandler = (id, option) => {
     if (option === "delete") {
+      localStorage.removeItem(id);
       setExpenses((prevExpenses) => {
         return prevExpenses.filter((expense) => expense.id !== id);
       });
     } else if (option === "edit") {
+      // set data source of edit form component
       setExpenseToEdit(expenses.find((elem) => elem.id === id));
       openEditFormModal();
     }
   };
 
-  const editExpenseDataHandler = (editedExpenseData) => {
-    const i = expenses.findIndex((elem) => elem.id === editedExpenseData.id);
-    expenses[i] = editedExpenseData;
+  const editExpenseDataHandler = (id, editedExpenseData) => {
+    const index = expenses.findIndex((elem) => elem.id === id);
+    localStorage.setItem(id, JSON.stringify(editedExpenseData));
+    expenses[index] = { id, ...editedExpenseData };
     closeEditFormModal();
   };
 
